@@ -1,0 +1,408 @@
+2026-05-15 21:45:35.063102-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-15 21:45:35.068128-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-15 21:45:35.070294-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-15 21:45:38.244333-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-15 21:45:38.245387-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-15 21:45:38.246416-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-15 22:01:31.256974-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PACIENTE_CONSULTAS" not found; SQL statement:
+select c1_0.paciente_id,c1_1.id,c1_1.data_consulta,c1_1.hora_consulta,m1_0.id,m1_0.crm,m1_0.email,m1_0.especialidade,m1_0.nome,m1_0.telefone,p1_0.id,p1_0.email,p1_0.nome,p1_0.telefone,c1_1.status from paciente_consultas c1_0 join consulta c1_1 on c1_1.id=c1_0.consultas_id left join medico m1_0 on m1_0.id=c1_1.id_medico left join paciente p1_0 on p1_0.id=c1_1.id_paciente where c1_0.paciente_id=? [42102-240]
+2026-05-15 22:01:37.946487-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PACIENTE_CONSULTAS" not found; SQL statement:
+select c1_0.paciente_id,c1_1.id,c1_1.data_consulta,c1_1.hora_consulta,m1_0.id,m1_0.crm,m1_0.email,m1_0.especialidade,m1_0.nome,m1_0.telefone,p1_0.id,p1_0.email,p1_0.nome,p1_0.telefone,c1_1.status from paciente_consultas c1_0 join consulta c1_1 on c1_1.id=c1_0.consultas_id left join medico m1_0 on m1_0.id=c1_1.id_medico left join paciente p1_0 on p1_0.id=c1_1.id_paciente where c1_0.paciente_id=? [42102-240]
+2026-05-15 22:01:54.438255-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PACIENTE_CONSULTAS" not found; SQL statement:
+select c1_0.paciente_id,c1_1.id,c1_1.data_consulta,c1_1.hora_consulta,m1_0.id,m1_0.crm,m1_0.email,m1_0.especialidade,m1_0.nome,m1_0.telefone,p1_0.id,p1_0.email,p1_0.nome,p1_0.telefone,c1_1.status from paciente_consultas c1_0 join consulta c1_1 on c1_1.id=c1_0.consultas_id left join medico m1_0 on m1_0.id=c1_1.id_medico left join paciente p1_0 on p1_0.id=c1_1.id_paciente where c1_0.paciente_id=? [42102-240]
+2026-05-18 15:56:23.176342-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 15:56:23.184325-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 15:56:23.185451-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 15:57:36.850995-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 15:57:36.851993-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 15:57:36.852994-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 15:57:48.891846-03:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 15:57:48.892855-03:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 15:57:48.892855-03:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:03:42.633046-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:03:42.641989-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:03:42.643107-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:04:30.900496-03:00 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:04:30.902246-03:00 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:04:30.902246-03:00 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:08:43.506812-03:00 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:08:43.514044-03:00 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:08:43.515218-03:00 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:09:13.515602-03:00 jdbc[26]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:09:13.516699-03:00 jdbc[26]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:09:13.517703-03:00 jdbc[26]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:10:31.952813-03:00 jdbc[37]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:10:31.952813-03:00 jdbc[37]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:10:31.952813-03:00 jdbc[37]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:11:30.218016-03:00 jdbc[47]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:11:30.219033-03:00 jdbc[47]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:11:30.220147-03:00 jdbc[47]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:11:39.139171-03:00 jdbc[57]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:11:39.139171-03:00 jdbc[57]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:11:39.140520-03:00 jdbc[57]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:12:54.471690-03:00 jdbc[67]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:12:54.472690-03:00 jdbc[67]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:12:54.472690-03:00 jdbc[67]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:15:02.329646-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Values of types "ENUM('AGUARDANDO', 'ANDAMENTO', 'ATENDIDO')" and "INTEGER" are not comparable; SQL statement:
+ALTER TABLE "PUBLIC"."CONSULTA_COPY_3_0" ADD CONSTRAINT "CONSULTA_COPY_3_0_CONSTRAINT_C" CHECK("STATUS" BETWEEN 0 AND 2) NOCHECK [90110-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.value.TypeInfo.checkComparable(TypeInfo.java:766)
+	at org.h2.expression.condition.BetweenPredicate.optimize(BetweenPredicate.java:74)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:186)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:306)
+	at org.h2.command.Command.executeUpdate(Command.java:250)
+	at org.h2.command.ddl.AlterTableAlterColumn.execute(AlterTableAlterColumn.java:648)
+	at org.h2.command.ddl.AlterTableAlterColumn.cloneTableStructure(AlterTableAlterColumn.java:570)
+	at org.h2.command.ddl.AlterTableAlterColumn.copyData(AlterTableAlterColumn.java:343)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:229)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:306)
+	at org.h2.command.Command.executeUpdate(Command.java:250)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:76)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:566)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:506)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:324)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:220)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:269)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:323)
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:437)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1456)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at br.com.serratec.exercicio1.Exercicio1Application.main(Exercicio1Application.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
+2026-05-18 16:16:08.404450-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, id bigint, medico_id bigint, paciente_id bigint, status enum ('AGUARDANDO','ANDAMENTO','ATENDIDO'), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:16:08.405839-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:16:08.407127-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:16:08.425210-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Values of types "ENUM('AGUARDANDO', 'ANDAMENTO', 'ATENDIDO')" and "INTEGER" are not comparable; SQL statement:
+ALTER TABLE "PUBLIC"."CONSULTA_COPY_14_1" ADD CONSTRAINT "CONSULTA_COPY_14_1_CONSTRAINT_C" CHECK("STATUS" BETWEEN 0 AND 2) NOCHECK [90110-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.value.TypeInfo.checkComparable(TypeInfo.java:766)
+	at org.h2.expression.condition.BetweenPredicate.optimize(BetweenPredicate.java:74)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:186)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:306)
+	at org.h2.command.Command.executeUpdate(Command.java:250)
+	at org.h2.command.ddl.AlterTableAlterColumn.execute(AlterTableAlterColumn.java:648)
+	at org.h2.command.ddl.AlterTableAlterColumn.cloneTableStructure(AlterTableAlterColumn.java:570)
+	at org.h2.command.ddl.AlterTableAlterColumn.copyData(AlterTableAlterColumn.java:343)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:229)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:306)
+	at org.h2.command.Command.executeUpdate(Command.java:250)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:76)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:566)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:506)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:324)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:220)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:269)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:323)
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:437)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1456)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at br.com.serratec.exercicio1.Exercicio1Application.main(Exercicio1Application.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
+2026-05-18 16:17:13.465139-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Values of types "ENUM('AGUARDANDO', 'ANDAMENTO', 'ATENDIDO')" and "INTEGER" are not comparable; SQL statement:
+ALTER TABLE "PUBLIC"."CONSULTA_COPY_3_0" ADD CONSTRAINT "CONSULTA_COPY_3_0_CONSTRAINT_C" CHECK("STATUS" BETWEEN 0 AND 2) NOCHECK [90110-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.value.TypeInfo.checkComparable(TypeInfo.java:766)
+	at org.h2.expression.condition.BetweenPredicate.optimize(BetweenPredicate.java:74)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:186)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:306)
+	at org.h2.command.Command.executeUpdate(Command.java:250)
+	at org.h2.command.ddl.AlterTableAlterColumn.execute(AlterTableAlterColumn.java:648)
+	at org.h2.command.ddl.AlterTableAlterColumn.cloneTableStructure(AlterTableAlterColumn.java:570)
+	at org.h2.command.ddl.AlterTableAlterColumn.copyData(AlterTableAlterColumn.java:343)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:229)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:306)
+	at org.h2.command.Command.executeUpdate(Command.java:250)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:76)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:566)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:506)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:324)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:220)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:269)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:323)
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:437)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1456)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at br.com.serratec.exercicio1.Exercicio1Application.main(Exercicio1Application.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
+2026-05-18 16:19:03.806317-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:19:03.807320-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:19:03.808320-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:21:02.466233-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:21:02.475470-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:21:02.477654-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:21:22.827468-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:21:22.828582-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:21:22.828582-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:27:12.145572-03:00 jdbc[35]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:27:12.146723-03:00 jdbc[35]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:27:12.147771-03:00 jdbc[35]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:27:23.132072-03:00 jdbc[45]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:27:23.133182-03:00 jdbc[45]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:27:23.133182-03:00 jdbc[45]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:28:31.686040-03:00 jdbc[55]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "delete from CONSULTA where id=1552 [*]cascade"; SQL statement:
+delete from CONSULTA where id=1552 cascade [42000-240]
+2026-05-18 16:30:12.187329-03:00 jdbc[56]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:30:12.189847-03:00 jdbc[56]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:30:12.191054-03:00 jdbc[56]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:30:36.257053-03:00 jdbc[66]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CONSULTA" already exists; SQL statement:
+create global temporary table HTE_consulta(dataConsulta date, horaConsulta time(0), rn_ integer not null, status tinyint, id bigint, medico_id bigint, paciente_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-18 16:30:36.257053-03:00 jdbc[66]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_PACIENTE" already exists; SQL statement:
+create global temporary table HTE_paciente(rn_ integer not null, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-18 16:30:36.258056-03:00 jdbc[66]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_MEDICO" already exists; SQL statement:
+create global temporary table HTE_medico(rn_ integer not null, crm bigint, id bigint, telefone varchar(11), nome varchar(60), email varchar(255), especialidade varchar(255), primary key (rn_)) transactional [42101-240]
