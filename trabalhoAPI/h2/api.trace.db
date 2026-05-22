@@ -57205,3 +57205,6 @@ create global temporary table HTE_vendedor1(rn_ integer not null, comissao float
 2026-05-22 16:48:28.121241-03:00 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
 create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-22 17:04:03.837001-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM LANCAMENTO_VENDAS inerjoin [*]VENDEDOR"; SQL statement:
+SELECT * FROM LANCAMENTO_VENDAS inerjoin VENDEDOR [42000-240]
