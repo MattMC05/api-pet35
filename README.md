@@ -67,7 +67,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 | <img src="https://github.com/leandrotcdev.png" width="60px;"/> | [**Leandro**](https://github.com/leandrotcdev) | Fullstack Developer |
 | <img src="https://github.com/MarceloMdx.png" width="60px;"/> | [**Marcelo**](https://github.com/MarceloMdx) | Fullstack Developer |
 | <img src="https://github.com/MattMC05.png" width="60px;"/> | [**Matheus**](https://github.com/MattMC05) | Fullstack Developerr |
-| <img src="RodolphoAlmeida-FS.png" width="60px;"/> | [**Rodolpho**](https://github.com/RodolphoAlmeida-FS) | Fullstack Developer |
+| <img src="https://github.com/RodolphoAlmeida-FS.png" width="60px;"/> | [**Rodolpho**](https://github.com/RodolphoAlmeida-FS) | Fullstack Developer |
 
 ---
 
