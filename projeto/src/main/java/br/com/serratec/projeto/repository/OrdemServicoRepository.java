@@ -1,14 +1,12 @@
 package br.com.serratec.projeto.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface OrdemServicoRepository extends JpaRepository<OrdemServico, Long> {
+import br.com.serratec.projeto.model.OrdemDeServico;
+
+public interface OrdemServicoRepository extends JpaRepository<OrdemDeServico, Long> {
     
-    List<OrdemServico> findByClienteId(Long clienteId);
+    OrdemDeServico findByClienteId(Long clienteId);
 
-    List<OrdemServico> findByVeiculoId(Long veiculoId);
+    OrdemDeServico findByVeiculoId(Long veiculoId);
 }
