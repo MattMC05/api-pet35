@@ -19,7 +19,7 @@ public record ClienteResponseDTO(
 {
     public ClienteResponseDTO(Cliente c) {
         this(c.getId(), c.getNome(), c.getEmail(), c.getTelefone(), 
-             c.getLogradouro(), c.getBairro(), c.getLocalidade(), c.getUf());
+             c.getEndereco().getLogradouro(), c.getEndereco().getBairro(), c.getEndereco().getLocalidade(), c.getEndereco().getUf());
     }
 
 }
