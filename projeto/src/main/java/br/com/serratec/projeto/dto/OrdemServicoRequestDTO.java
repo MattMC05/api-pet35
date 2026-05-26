@@ -1,0 +1,24 @@
+package br.com.serratec.projeto.dto;
+
+import java.util.List;
+import jakarta.validation.constraints.NotNull;
+
+// DTO Principal: A abertura da OS (Ordem de Serviço)
+public record OrdemServicoRequestDTO(
+
+    @NotNull(message = "ID do cliente é obrigatório")
+    Long clienteId,
+
+    @NotNull(message = "ID do veículo é obrigatório")
+    Long veiculoId,
+
+    @NotNull(message = "Status é obrigatório")
+    StatusOS status,
+
+    @NotNull(message = "Itens da OS são obrigatórios")
+    List<ItemOsRequestDTO> itensRealizados
+)
+
+{
+
+}
