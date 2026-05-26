@@ -7,8 +7,6 @@ public class VeiculoServico {
     private Double quantidade;
     private Double subTotal;
 
-
-
     public Double getValorServico() {
         return valorServico;
     }

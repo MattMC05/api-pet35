@@ -2,7 +2,7 @@ package br.com.serratec.projeto.dto;
 
 import br.com.serratec.projeto.model.Endereco;
 
-public record EnderecoResponseDTO(
+public record EnderecoRequestDTO(
     String cep,
     String logradouro,
     String bairro,
@@ -11,7 +11,7 @@ public record EnderecoResponseDTO(
 ) 
 
 {
-    public EnderecoResponseDTO(Endereco endereco){
+    public EnderecoRequestDTO(Endereco endereco){
         this(
             endereco.getCep(), 
             endereco.getLogradouro(), 

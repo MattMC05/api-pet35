@@ -34,8 +34,6 @@ public class Veiculo {
 
     private String cor;
 
-    
-
     public Long getId() {
         return id;
     }
