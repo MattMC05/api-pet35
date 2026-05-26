@@ -12,14 +12,12 @@ public record ClienteResponseDTO(
     String logradouro, 
     String bairro, 
     String localidade, 
-    String uf,
-    EnderecoResponseDTO endereco
-) 
+    String uf
+)
 
 {
     public ClienteResponseDTO(Cliente c) {
-        this(c.getId(), c.getNome(), c.getEmail(), c.getTelefone(), 
-             c.getEndereco().getLogradouro(), c.getEndereco().getBairro(), c.getEndereco().getLocalidade(), c.getEndereco().getUf());
+        this(c.getId(), c.getNome(), c.getTelefone(), c.getEmail(), c.getCpf(), c.getEndereco().getLogradouro(), c.getEndereco().getBairro(), c.getEndereco().getLocalidade(), c.getEndereco().getUf());
     }
 
 }

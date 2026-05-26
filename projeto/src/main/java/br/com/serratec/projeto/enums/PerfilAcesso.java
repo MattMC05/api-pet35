@@ -1,4 +1,4 @@
-package br.com.serratec.projeto.enums;]
+package br.com.serratec.projeto.enums;
 
 public enum PerfilAcesso {
     

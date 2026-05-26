@@ -1,7 +1,7 @@
 package br.com.serratec.projeto.dto;
 
 import java.math.BigDecimal;
-import br.com.serratec.projeto.model.ItemOrdemServico; // Import da nossa entidade N x N
+import br.com.serratec.projeto.model.VeiculoServico; // Import da nossa entidade N x N
 
 public record ItemOsResponseDTO(
 
@@ -15,7 +15,7 @@ public record ItemOsResponseDTO(
 
 {
     // Construtor feito para facilitar o mapeamento na camada de Service, direto e blindado.
-    public ItemOsResponseDTO(ItemOrdemServico item) {
+    public ItemOsResponseDTO(VeiculoServico item) {
         this(
             item.getServico().getId(),
             item.getServico().getDescricao(),
