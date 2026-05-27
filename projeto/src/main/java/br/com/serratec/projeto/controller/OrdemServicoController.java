@@ -21,9 +21,9 @@ public class OrdemServicoController {
 
     @PostMapping
 @ResponseStatus(HttpStatus.CREATED)
-   @Operation(summary = "Cadastra um veículo vinculando-o a um ordemServico")
+    @Operation(summary = "Cadastra um veículo vinculando-o a um ordemServico")
     public OrdemServicoResponseDTO inserir(@Valid @RequestBody OrdemServicoRequestDTO dto) {
-     return osService.inserir(dto);
+    return osService.inserir(dto);
 
     }
 

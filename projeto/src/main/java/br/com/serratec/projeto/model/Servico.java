@@ -15,11 +15,15 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Descricao é Obrigatoria")
+    private String descricao;
+
     private Double valor;
 
     @NotBlank
     @FutureOrPresent(message = "Data não pode ser passada")
     private LocalDate tempoEstimado;
+
 
     public Long getId() {
         return id;
@@ -43,6 +47,14 @@ public class Servico {
 
     public void setTempoEstimado(LocalDate tempoEstimado) {
         this.tempoEstimado = tempoEstimado;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
 }
