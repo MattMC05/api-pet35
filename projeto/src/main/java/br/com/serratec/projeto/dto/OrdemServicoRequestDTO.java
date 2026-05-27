@@ -15,10 +15,10 @@ public record OrdemServicoRequestDTO(
     Long veiculoId,
 
     @NotNull(message = "Status é obrigatório")
-    OsStatus status,
+    OsStatus status//,
 
-    @NotNull(message = "Itens da OS são obrigatórios")
-    List<ItemOsRequestDTO> itensRealizados
+    //@NotNull(message = "Itens da OS são obrigatórios")
+    //List<ItemOsRequestDTO> itensRealizados
 )
 
 {

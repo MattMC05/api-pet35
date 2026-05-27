@@ -2,33 +2,33 @@ package br.com.serratec.projeto.model;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class VeiculoServico {
+public class ItemOs { //tabela intermediária
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private BigDecimal valorServico;
     private BigDecimal desconto;
-    private Integer quantidade;
+    private BigDecimal quantidade;
     private BigDecimal subtotal;
 
     @ManyToOne
     @JoinColumn(name = "id_ordem_de_servico")
+    @JsonBackReference
     private OrdemDeServico ordemDeServico;
 
     @ManyToOne
     @JoinColumn(name = "id_servico")
     private Servico servico;
-
-    public BigDecimal getValorServico() {
-        return valorServico;
-    }
-
-    public void setValorServico(BigDecimal valorServico) {
-        this.valorServico = valorServico;
-    }
 
     public BigDecimal getDesconto() {
         return desconto;
@@ -38,20 +38,17 @@ public class VeiculoServico {
         this.desconto = desconto;
     }
 
-    public Integer getQuantidade() {
+    public BigDecimal getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(BigDecimal quantidade) {
         this.quantidade = quantidade;
     }
 
     public BigDecimal getSubtotal() {
+        subtotal = servico.getValor().multiply(quantidade).subtract(servico.getValor().multiply(desconto));
         return subtotal;
-    }
-
-    public void setSubtotal(BigDecimal subtotal) {
-        this.subtotal = subtotal;
     }
 
     public OrdemDeServico getOrdemDeServico() {
