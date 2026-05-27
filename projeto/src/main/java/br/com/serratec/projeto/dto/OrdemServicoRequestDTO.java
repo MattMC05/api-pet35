@@ -1,7 +1,5 @@
 package br.com.serratec.projeto.dto;
 
-import java.util.List;
-
 import br.com.serratec.projeto.enums.OsStatus;
 import jakarta.validation.constraints.NotNull;
 
