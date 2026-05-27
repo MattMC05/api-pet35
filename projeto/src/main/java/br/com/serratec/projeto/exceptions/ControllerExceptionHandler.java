@@ -13,10 +13,11 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
@@ -37,19 +38,61 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected @Nullable ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
             HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-                ErroResposta er = new ErroResposta(status.value(), "Erro na Requisição: "+ex.getMessage(), LocalDateTime.now());
+        ErroResposta er = new ErroResposta(status.value(), "Erro na Requisição: " + ex.getMessage(), LocalDateTime.now());
         return super.handleExceptionInternal(ex, er, headers, status, request);
     }
-   @ExceptionHandler(ClienteEmailException.class)
+
+    @ExceptionHandler(ClienteEmailException.class)
     protected @Nullable ResponseEntity<Object> handleClienteEmailException(ClienteEmailException ex){
-        ErroResposta er = new ErroResposta(HttpStatus.UNPROCESSABLE_CONTENT.value(), "Erro na Requisição: "+ex.getMessage(), LocalDateTime.now());
+        ErroResposta er = new ErroResposta(HttpStatus.UNPROCESSABLE_CONTENT.value(), "Erro na Requisição: " + ex.getMessage(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT).body(er);
     }
 
     @ExceptionHandler(EnderecoException.class)
     protected @Nullable ResponseEntity<Object> handleEnderecoException(EnderecoException ex){
-        ErroResposta er = new ErroResposta(HttpStatus.NOT_FOUND.value(), "Erro na Requisição: "+ex.getMessage(), LocalDateTime.now());
+        ErroResposta er = new ErroResposta(HttpStatus.NOT_FOUND.value(), "Erro na Requisição: " + ex.getMessage(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(er);
     }
+    
+    @ExceptionHandler(AutenticacaoException.class)
+    public ResponseEntity<ErroResposta> autenticacaoError(AutenticacaoException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
+        ErroResposta err = new ErroResposta(status.value(), e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(status).body(err);
+    }
 
+    @ExceptionHandler(BancoDeDadosException.class)
+    public ResponseEntity<ErroResposta> bancoDeDadosError(BancoDeDadosException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST; 
+        ErroResposta err = new ErroResposta(status.value(), e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(EnumInvalidoException.class)
+    public ResponseEntity<ErroResposta> enumInvalidoError(EnumInvalidoException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST; 
+        ErroResposta err = new ErroResposta(status.value(), e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErroResposta> resourceNotFoundError(ResourceNotFoundException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND; 
+        ErroResposta err = new ErroResposta(status.value(), e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(InvalidDataException.class)
+    public ResponseEntity<ErroResposta> invalidDataError(InvalidDataException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST; 
+        ErroResposta err = new ErroResposta(status.value(), e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(InvalidCEPException.class)
+    public ResponseEntity<ErroResposta> invalidCepError(InvalidCEPException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST; 
+        ErroResposta err = new ErroResposta(status.value(), e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(status).body(err);
+    }
 }
