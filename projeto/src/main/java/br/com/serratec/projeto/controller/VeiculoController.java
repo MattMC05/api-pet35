@@ -23,7 +23,7 @@ public class VeiculoController {
 
     
 @PostMapping
- @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Cadastra um veículo vinculando-o a um cliente")
     public VeiculoResponseDTO inserir(@Valid @RequestBody VeiculoRequestDTO dto) {
         return VeiculoService.inserir(dto);
