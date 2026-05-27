@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -14,6 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
@@ -37,6 +39,17 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
             HttpHeaders headers, HttpStatusCode status, WebRequest request) {
                 ErroResposta er = new ErroResposta(status.value(), "Erro na Requisição: "+ex.getMessage(), LocalDateTime.now());
         return super.handleExceptionInternal(ex, er, headers, status, request);
+    }
+   @ExceptionHandler(ClienteEmailException.class)
+    protected @Nullable ResponseEntity<Object> handleClienteEmailException(ClienteEmailException ex){
+        ErroResposta er = new ErroResposta(HttpStatus.UNPROCESSABLE_CONTENT.value(), "Erro na Requisição: "+ex.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT).body(er);
+    }
+
+    @ExceptionHandler(EnderecoException.class)
+    protected @Nullable ResponseEntity<Object> handleEnderecoException(EnderecoException ex){
+        ErroResposta er = new ErroResposta(HttpStatus.NOT_FOUND.value(), "Erro na Requisição: "+ex.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(er);
     }
 
 }
