@@ -7,7 +7,12 @@ import br.com.serratec.projeto.service.VeiculoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+
+import org.springdoc.core.converters.models.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.ScrollPosition.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +39,11 @@ public class VeiculoController {
     public ResponseEntity<VeiculoResponseDTO> update(@PathVariable Long id, @Valid @RequestBody VeiculoResponseDTO dto) {
         VeiculoResponseDTO veiculoAtualizado = veiculoService.buscar(id, dto);
         return ResponseEntity.ok().body(veiculoAtualizado);
+    }
+    @GetMapping("/paginacao")
+    public Page<Veiculo> listarPorPagina(
+            @PageableDefault(size = 5, page = 0, sort = "Modelo") Pageable pageable) {
+        return veiculoService.listarPorPagina(pageable);
     }
 
     @GetMapping
