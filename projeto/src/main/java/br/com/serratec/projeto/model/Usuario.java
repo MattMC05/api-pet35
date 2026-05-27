@@ -21,11 +21,11 @@ import java.util.List;
 @Table(name = "usuarios")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // Cria o construtor vazio exigido pelo JPA como "protected"
-@EqualsAndHashCode(of = "id") // JPA: Equals/HashCode baseados APENAS no ID para uso seguro em Collections (Set/List)
+@EqualsAndHashCode(of = "id") // Equals/HashCode baseados APENAS no ID para uso seguro em Collections (Set/List)
 public class Usuario implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false)
@@ -78,7 +78,7 @@ public class Usuario implements UserDetails {
         this.nome = nome;
         this.email = email;
         this.senha = senhaCriptografada;
-        this.perfil = (perfil != null) ? perfil : PerfilAcesso.ROLE_MECANICO; // Fallback seguro
+        this.perfil = (perfil != null) ? perfil : PerfilAcesso.ROLE_ADMIN; // Fallback seguro
     }
 
     // Encapsulamento: Única forma de alterar a senha de fora da classe
