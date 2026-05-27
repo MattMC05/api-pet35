@@ -1,5 +1,7 @@
 package br.com.serratec.projeto.dto;
 
+import java.time.LocalDate;
+
 import br.com.serratec.projeto.model.Veiculo;
 
 public record VeiculoResponseDTO(
@@ -8,15 +10,14 @@ public record VeiculoResponseDTO(
     String placa,
     String marca,
     String modelo,
-    Integer ano,
-    String cor, 
-    String nomeProprietario, // Ao listar os veículos deverá exibir o nome do dono ou proprietário
+    LocalDate ano,
+    String cor,
     ClienteResponseDTO cliente
 ) 
 
 {
     public VeiculoResponseDTO(Veiculo v) {
-        this(v.getId(), v.getPlaca(), v.getMarca(), v.getModelo(), v.getCliente().getNome());
+        this(v.getId(), v.getPlaca(), v.getMarca(), v.getModelo(), v.getAno(), v.getCor(), new ClienteResponseDTO(v.getCliente()));
     }
 
 }

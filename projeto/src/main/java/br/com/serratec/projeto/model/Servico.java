@@ -1,5 +1,6 @@
 package br.com.serratec.projeto.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
@@ -18,7 +19,7 @@ public class Servico {
     @NotBlank(message = "Descricao é Obrigatoria")
     private String descricao;
 
-    private Double valor;
+    private BigDecimal valor;
 
     @NotBlank
     @FutureOrPresent(message = "Data não pode ser passada")
@@ -33,11 +34,11 @@ public class Servico {
         this.id = id;
     }
 
-    public Double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

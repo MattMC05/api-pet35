@@ -1,5 +1,11 @@
 package br.com.serratec.projeto.model;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import br.com.serratec.projeto.enums.OsStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class OrdemDeServico {
@@ -26,6 +33,13 @@ public class OrdemDeServico {
     @ManyToOne
     @JoinColumn(name = "id_veiculo")
     private Veiculo veiculo;
+
+    @OneToMany(mappedBy = "id_ordem_de_servico")
+    @JoinColumn(name = "id_item_os")
+    @JsonManagedReference
+    private List<ItemOs> itemsOs = new ArrayList<>();
+
+    private BigDecimal valorTotal;
 
     public Long getId() {
         return id;
@@ -58,4 +72,16 @@ public class OrdemDeServico {
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
     }
+
+    public List<ItemOs> getItemsOs() {
+        return itemsOs;
+    }
+
+    public BigDecimal getValorTotal() {
+        for (ItemOs itemOs : itemsOs) {
+            valorTotal = valorTotal.add(itemOs.getSubtotal());
+        }
+        return valorTotal;
+    }
+
 }

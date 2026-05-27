@@ -1,7 +1,7 @@
 package br.com.serratec.projeto.dto;
 
 import java.math.BigDecimal;
-import br.com.serratec.projeto.model.VeiculoServico; // Import da nossa entidade N x N
+import br.com.serratec.projeto.model.ItemOs; // Import da nossa entidade N x N
 
 public record ItemOsResponseDTO(
 
@@ -9,17 +9,17 @@ public record ItemOsResponseDTO(
     String descricaoServico,
     BigDecimal valorServico,
     BigDecimal desconto,
-    Integer quantidade,
+    BigDecimal quantidade,
     BigDecimal subtotal
 ) 
 
 {
-    // Construtor feito para facilitar o mapeamento na camada de Service, direto e blindado.
-    public ItemOsResponseDTO(VeiculoServico item) {
+    
+    public ItemOsResponseDTO(ItemOs item) {
         this(
             item.getServico().getId(),
             item.getServico().getDescricao(),
-            item.getValorServico(),
+            item.getServico().getValor(),
             item.getDesconto(),
             item.getQuantidade(),
             item.getSubtotal()
