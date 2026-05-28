@@ -50,7 +50,7 @@ public class JwtUtil {
     }
 
     // Valida se o token pertence ao utilizador e se ainda está no prazo de validade.
-    public boolean isValidToken(String token, UserDetails userDetails) {
+    public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username != null && username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }

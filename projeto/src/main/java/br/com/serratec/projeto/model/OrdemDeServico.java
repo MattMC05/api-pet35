@@ -3,13 +3,12 @@ package br.com.serratec.projeto.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import br.com.serratec.projeto.enums.OsStatus;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,9 +33,7 @@ public class OrdemDeServico {
     @JoinColumn(name = "id_veiculo")
     private Veiculo veiculo;
 
-    @OneToMany(mappedBy = "id_ordem_de_servico")
-    @JoinColumn(name = "id_item_os")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "ordemDeServico", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<ItemOs> itemsOs = new ArrayList<>();
 
     private BigDecimal valorTotal;

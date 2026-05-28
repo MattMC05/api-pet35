@@ -64,11 +64,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             System.out.println("-> Teste3: Usuário encontrado no banco de dados: " + user.getUsername());
 
             // 3. Valida se o token realmente pertence a este usuário e se não expirou
-            if (jwtUtil.isValidToken(token, user)) {
+            if (jwtUtil.isTokenValid(token, user)) {
                 System.out.println("-> Teste4: Validação do Token confirmada (isTokenValid = true).");
                 return new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             } else {
-                System.out.println("-> Teste Erro: isValidToken retornou FALSE.");
+                System.out.println("-> Teste Erro: isTokenValid retornou FALSE.");
             }
         }
         return null;

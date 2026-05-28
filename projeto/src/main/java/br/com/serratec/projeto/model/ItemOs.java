@@ -1,9 +1,6 @@
 package br.com.serratec.projeto.model;
 
 import java.math.BigDecimal;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,12 +27,11 @@ public class ItemOs { //tabela intermediária
 
     private BigDecimal subtotal;
 
-    @ManyToOne
-    @JoinColumn(name = "id_ordem_de_servico")
-    @JsonBackReference
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_ordem_servico")
     private OrdemDeServico ordemDeServico;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_servico")
     private Servico servico;
 
