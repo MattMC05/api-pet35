@@ -48,8 +48,13 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private boolean ativo = true;
 
-    public void desativar() { this.ativo = false; }
-    public void ativar() { this.ativo = true; }
+    public void desativar() { 
+        this.ativo = false; 
+    }
+    
+    public void ativar() { 
+        this.ativo = true; 
+    }
 
     @CreatedDate
     @Column(name = "data_criacao", updatable = false)
