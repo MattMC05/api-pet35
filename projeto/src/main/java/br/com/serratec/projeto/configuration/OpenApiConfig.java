@@ -22,7 +22,7 @@ public class OpenApiConfig {
     private String prodUrl;
 
     @Bean
-    public OpenAPI myOpenAPI() {
+    OpenAPI myOpenAPI() {
         Server devServer = new Server();
         devServer.setUrl(devUrl);
         devServer.setDescription("URL do servidor de desenvolvimento");
