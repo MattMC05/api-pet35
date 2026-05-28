@@ -10,6 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 public class ItemOs { //tabela intermediária
@@ -17,8 +20,14 @@ public class ItemOs { //tabela intermediária
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull(message = "Desconto é obrigatório")
+    @DecimalMin(value = "0.00", message = "Desconto deve ser positivo")
     private BigDecimal desconto;
+
+    @NotNull(message = "Quantidade é obrigatória")
+    @Positive(message = "Quantidade deve ser positiva")
     private BigDecimal quantidade;
+
     private BigDecimal subtotal;
 
     @ManyToOne

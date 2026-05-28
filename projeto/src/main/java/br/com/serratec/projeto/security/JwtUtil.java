@@ -25,9 +25,7 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    /**
-     * Gera o token a partir do e-mail/username do utilizador.
-     */
+    // Gera o token a partir do e-mail/username do utilizador.
     public String generateToken(String username) {
         return Jwts.builder()
                 .subject(username)
@@ -37,10 +35,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    /**
-     * Extrai o username (e-mail) de dentro do Token.
-     * Retorna null se o token for inválido, adulterado ou estiver expirado.
-     */
+    // Extrai o username (e-mail) de dentro do Token. Retorna null se o token for inválido, adulterado ou estiver expirado.
     public String extractUsername(String token) {
         try {
             return Jwts.parser()
@@ -54,17 +49,13 @@ public class JwtUtil {
         }
     }
 
-    /**
-     * Valida se o token pertence ao utilizador e se ainda está no prazo de validade.
-     */
+    // Valida se o token pertence ao utilizador e se ainda está no prazo de validade.
     public boolean isValidToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username != null && username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    /**
-     * Checa se a data de expiração do token é anterior à data atual.
-     */
+    // Checa se a data de expiração do token é anterior à data atual.
     private boolean isTokenExpired(String token) {
         try {
             Date expirationDate = Jwts.parser()
@@ -78,6 +69,5 @@ public class JwtUtil {
             return true; // Se falhar ao ler a data, assume como expirado por segurança
         }
     }
-
 
 }

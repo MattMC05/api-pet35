@@ -2,9 +2,13 @@ package br.com.serratec.projeto.model;
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Endereco {
+    @NotBlank(message = "CEP é obrigatório")
+    @Pattern(regexp = "\\d{8}", message = "CEP deve conter 8 dígitos")
     @Id
     private String cep;
 
