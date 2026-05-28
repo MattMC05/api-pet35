@@ -1,10 +1,14 @@
 package br.com.serratec.projeto.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.serratec.projeto.configuration.MailConfig;
+import br.com.serratec.projeto.dto.ClienteResponseDTO;
 import br.com.serratec.projeto.dto.EnderecoResponseDTO;
 import br.com.serratec.projeto.exceptions.ClienteEmailException;
 import br.com.serratec.projeto.exceptions.EnderecoException;
@@ -27,7 +31,7 @@ public class ClienteService {
     private MailConfig mailConfig;
 
     @Transactional
-    public Cliente inserir(Cliente cliente){
+    public ClienteResponseDTO inserir(Cliente cliente){
         Cliente clienteBanco = clienteRepository.findByEmail(cliente.getEmail());
         if (clienteBanco != null) {
             throw new ClienteEmailException("Email já cadastrado");
@@ -35,7 +39,8 @@ public class ClienteService {
         buscarCep(cliente.getEndereco().getCep());
 
         mailConfig.sendMail(cliente.getEmail(), "Cadastro de cliente", cliente.toString());
-        return clienteRepository.save(cliente);
+        clienteRepository.save(cliente);
+        return new ClienteResponseDTO(cliente);
     }
 
 
@@ -60,12 +65,18 @@ public class ClienteService {
         return new EnderecoResponseDTO(enRepository.save(enderecoViaCep));
     }
 
+    public List<ClienteResponseDTO> listarTodos(){
+        return clienteRepository.findAll().stream()
+        .map(cliente -> new ClienteResponseDTO(cliente))
+        .collect(Collectors.toList());
+    }
 
-    public Cliente alterar(Cliente cliente, Long id){
+    public ClienteResponseDTO alterar(Cliente cliente, Long id){
         if (clienteRepository.existsById(id)) {
             cliente.setId(id);
             mailConfig.sendMail(cliente.getEmail(), "Atualização de dados do cliente", cliente.toString());
-            return clienteRepository.save(cliente);
+            clienteRepository.save(cliente);
+            return new ClienteResponseDTO(cliente);
         }
         return null;
     }

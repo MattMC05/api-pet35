@@ -9,20 +9,31 @@ import org.springframework.stereotype.Service;
 import br.com.serratec.projeto.dto.OrdemServicoResponseDTO;
 import br.com.serratec.projeto.model.OrdemDeServico;
 import br.com.serratec.projeto.repository.OrdemServicoRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class OrdemServicoService {
     @Autowired
     private OrdemServicoRepository repository;
-
-    public OrdemDeServico inserir(OrdemDeServico ordemServico){
-        return repository.save(ordemServico);
+    
+    @Transactional
+    public OrdemServicoResponseDTO inserir(OrdemDeServico ordemServico){
+        repository.save(ordemServico);
+        return new OrdemServicoResponseDTO(ordemServico);
     }
 
     public List<OrdemServicoResponseDTO> listarTodos(){
-    return repository.findAll().stream()
-    .map(ordemServico -> new OrdemServicoResponseDTO(new OrdemDeServico()))
-    .collect(Collectors.toList());
+        return repository.findAll().stream()
+        .map(ordemServico -> new OrdemServicoResponseDTO(ordemServico))
+        .collect(Collectors.toList());
     }
 
+    public OrdemServicoResponseDTO alterar( Long id, OrdemDeServico ordemServico){
+        if (repository.existsById(id)) {
+            ordemServico.setId(id);
+            repository.save(ordemServico);
+            return new OrdemServicoResponseDTO(ordemServico);
+        }
+        return null;
+    }
 }
