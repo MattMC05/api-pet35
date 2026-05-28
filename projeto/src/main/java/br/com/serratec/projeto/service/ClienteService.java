@@ -71,7 +71,7 @@ public class ClienteService {
         .collect(Collectors.toList());
     }
 
-    public ClienteResponseDTO alterar(Cliente cliente, Long id){
+    public ClienteResponseDTO alterar( Long id, Cliente cliente){
         if (clienteRepository.existsById(id)) {
             cliente.setId(id);
             mailConfig.sendMail(cliente.getEmail(), "Atualização de dados do cliente", cliente.toString());
