@@ -39,4 +39,10 @@ public class ClienteController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> apagar(@PathVariable Long id){
+        service.apagar(id);
+        return ResponseEntity.noContent().build();
+    }
 }
