@@ -20,7 +20,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
 import br.com.serratec.projeto.security.JwtAuthenticationFilter;
 
 @Configuration
@@ -69,15 +68,12 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @@Bean
-    public AuthenticationProvider authenticationProvider() {
-        // 1. Cria a instância VAZIA (Sem nada dentro dos parênteses!)
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+    @Bean
+    AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
         
-        // 2. Ensina o Spring a ir buscar o utilizador no banco de dados (Volte com esta linha!)
-        authProvider.setUserDetailsService(userDetailsService); 
+        authProvider.setUserDetailsPasswordService(null); 
         
-        // 3. Injeta o algoritmo de criptografia da senha (BCrypt)
         authProvider.setPasswordEncoder(passwordEncoder());
         
         return authProvider;
