@@ -24,7 +24,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity // Permite usar @PreAuthorize nos Controllers
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;

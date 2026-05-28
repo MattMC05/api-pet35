@@ -28,7 +28,6 @@ public record AuthController(
     public ResponseEntity<AuthResponseDTO> login(@Valid @RequestBody LoginRequestDTO loginDTO) {
         
         // 1. O AuthenticationManager verifica as credenciais no banco automaticamente
-        // 💡 NOTA: Se o seu DTO for uma CLASSE e não um RECORD, mude aqui para .getUsername() e .getPassword()
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginDTO.username(), loginDTO.password())
         );
