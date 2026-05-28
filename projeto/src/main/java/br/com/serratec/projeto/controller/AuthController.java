@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.serratec.projeto.dto.AuthResponseDTO;
 import br.com.serratec.projeto.dto.LoginRequestDTO;
 import br.com.serratec.projeto.security.JwtUtil;
@@ -20,7 +19,6 @@ import jakarta.validation.Valid;
 @RequestMapping("/auth")
 @Tag(name = "Autenticação", description = "Endpoint público para login e geração de JWT")
 public record AuthController(
-
     AuthenticationManager authenticationManager,
     JwtUtil jwtUtil
 ) {
@@ -30,6 +28,7 @@ public record AuthController(
     public ResponseEntity<AuthResponseDTO> login(@Valid @RequestBody LoginRequestDTO loginDTO) {
         
         // 1. O AuthenticationManager verifica as credenciais no banco automaticamente
+        // 💡 NOTA: Se o seu DTO for uma CLASSE e não um RECORD, mude aqui para .getUsername() e .getPassword()
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginDTO.username(), loginDTO.password())
         );
@@ -40,5 +39,5 @@ public record AuthController(
         // 3. Devolve um JSON limpo e formatado
         return ResponseEntity.ok(new AuthResponseDTO(token));
     }
-
+    
 }

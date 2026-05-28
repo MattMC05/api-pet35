@@ -6,13 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,24 +19,27 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import br.com.serratec.projeto.security.JwtAuthenticationFilter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity // Permite usar @PreAuthorize nos Controllers
 public class SecurityConfig {
 
-    private final JwtAuthenticationFilter jwtAuthFilter;
     private final UserDetailsService userDetailsService;
+	private final JwtAuthenticationFilter jwtAuthFilter;
 
-    // Notas: O 'UserDetailsService' aqui usa a classe 'CustomUserDetailsService'
     public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter, UserDetailsService userDetailsService) {
         this.jwtAuthFilter = jwtAuthFilter;
         this.userDetailsService = userDetailsService;
     }
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            
             .csrf(csrf -> csrf.disable()) // CSRF é desnecessário em APIs REST Stateless com JWT
             
             // Permite que o console do H2 abra no navegador (desliga o bloqueio de frames)
@@ -49,15 +50,14 @@ public class SecurityConfig {
             
             // Mapeamento de Rotas
             .authorizeHttpRequests(auth -> auth
+                // 💡 CORREÇÃO 4: Rota duplicada ("/auth/") removida. "/auth/**" já faz o trabalho.
                 .requestMatchers("/h2-console/**", "/auth/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-				.requestMatchers("/auth/").permitAll()
-	            .requestMatchers(HttpMethod.GET,"/funcionarios").permitAll()
-	            .requestMatchers(HttpMethod.POST,"/perfis").permitAll()
-	            .requestMatchers("/h2-console/**").permitAll()
-	            .requestMatchers(HttpMethod.POST,"/usuarios").permitAll()
-	            .requestMatchers(HttpMethod.GET,"/usuarios").hasRole("ADMIN")
-	            .requestMatchers(HttpMethod.GET, "/funcionarios/*/foto").hasAnyRole("ADMIN", "COMPRAS","RH")
-	            .requestMatchers(HttpMethod.POST, "/funcionarios").hasAnyRole("ADMIN", "COMPRAS","RH")
+                .requestMatchers(HttpMethod.GET, "/funcionarios").permitAll()
+                .requestMatchers(HttpMethod.POST, "/perfis").permitAll()
+                .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+                .requestMatchers(HttpMethod.GET, "/usuarios").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/funcionarios/*/foto").hasAnyRole("ADMIN", "COMPRAS", "RH")
+                .requestMatchers(HttpMethod.POST, "/funcionarios").hasAnyRole("ADMIN", "COMPRAS", "RH")
                 .anyRequest().authenticated() // Qualquer outra rota exige Token!
             )
             
@@ -69,36 +69,38 @@ public class SecurityConfig {
     }
 
     @Bean
-    AuthenticationProvider authenticationProvider() {
+    public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
-        
-        authProvider.setUserDetailsPasswordService(null); 
-        
         authProvider.setPasswordEncoder(passwordEncoder());
-        
         return authProvider;
     }
 
-    // O Gerente de Autenticação utilizado lá no AuthController para fazer o Login.
     @Bean
-    AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
-    // O algoritmo criptográfico.
     @Bean
-    PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration corsConfiguration = new CorsConfiguration();
-		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:5173", "http://localhost:2000"));
-		corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", corsConfiguration.applyPermitDefaultValues());
-		return source;
-	}
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        
+        // Domínios do seu Front-end que têm permissão para consumir a API
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:5173", "http://localhost:2000"));
+        
+        // Métodos HTTP permitidos
+        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
+        
+        // 💡 DICA SÊNIOR EXTRA: É fundamental permitir os cabeçalhos de Authorization para o JWT passar no CORS!
+        corsConfiguration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Cache-Control"));
+        
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return source;
+    }
 
 }
