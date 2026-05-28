@@ -1,5 +1,6 @@
 package br.com.serratec.projeto.dto;
 
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -15,7 +16,8 @@ public record ServicoRequestDTO(
     @PositiveOrZero(message = "Valor deve ser positivo")
     BigDecimal valor,
 
-    @NotNull(message = "Tempo estimado é obrigatório")
+    @NotBlank(message = "Tempo estimado é obrigatório")
+    @FutureOrPresent(message = "Data não pode ser passada")
     @Positive(message = "Tempo deve ser positivo")
     Integer tempoEstimado, // em minutos
 

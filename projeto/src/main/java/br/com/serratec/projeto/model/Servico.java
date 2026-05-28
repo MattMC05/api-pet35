@@ -9,6 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 public class Servico {
@@ -16,15 +19,17 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "Descricao é Obrigatoria")
+    @NotBlank(message = "Descrição é obrigatória")
     private String descricao;
 
+    @NotNull(message = "Valor é obrigatório")
+    @PositiveOrZero(message = "Valor deve ser positivo")
     private BigDecimal valor;
 
-    @NotBlank
+    @NotBlank(message = "Tempo estimado é obrigatório")
     @FutureOrPresent(message = "Data não pode ser passada")
+    @Positive(message = "Tempo deve ser positivo")
     private LocalDate tempoEstimado;
-
 
     public Long getId() {
         return id;
