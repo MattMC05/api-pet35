@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.serratec.projeto.dto.ServicoResponseDTO;
+import br.com.serratec.projeto.exceptions.ResourceNotFoundException;
 import br.com.serratec.projeto.model.Servico;
 import br.com.serratec.projeto.repository.ServicoRepository;
 import jakarta.transaction.Transactional;
@@ -35,5 +36,13 @@ public class ServicoService {
             return new ServicoResponseDTO(ordemServico);
         }
         return null;
+    }
+
+    public void apagar(Long id){
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+        }else{
+            throw new ResourceNotFoundException("Serviço não encontrado");
+        }
     }
 }
