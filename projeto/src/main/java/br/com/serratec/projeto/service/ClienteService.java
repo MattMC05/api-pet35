@@ -12,6 +12,7 @@ import br.com.serratec.projeto.dto.ClienteResponseDTO;
 import br.com.serratec.projeto.dto.EnderecoResponseDTO;
 import br.com.serratec.projeto.exceptions.ClienteEmailException;
 import br.com.serratec.projeto.exceptions.EnderecoException;
+import br.com.serratec.projeto.exceptions.ResourceNotFoundException;
 import br.com.serratec.projeto.model.Cliente;
 import br.com.serratec.projeto.model.Endereco;
 import br.com.serratec.projeto.repository.ClienteRepository;
@@ -71,7 +72,7 @@ public class ClienteService {
         .collect(Collectors.toList());
     }
 
-    public ClienteResponseDTO alterar(Cliente cliente, Long id){
+    public ClienteResponseDTO alterar(Long id, Cliente cliente){
         if (clienteRepository.existsById(id)) {
             cliente.setId(id);
             mailConfig.sendMail(cliente.getEmail(), "Atualização de dados do cliente", cliente.toString());
@@ -79,6 +80,14 @@ public class ClienteService {
             return new ClienteResponseDTO(cliente);
         }
         return null;
+    }
+
+    public void apagar(Long id){
+        if (clienteRepository.existsById(id)) {
+            clienteRepository.deleteById(id);
+        }else{
+            throw new ResourceNotFoundException("Cliente não encontrado");
+        }
     }
 
 }

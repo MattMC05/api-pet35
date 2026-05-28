@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.serratec.projeto.dto.VeiculoResponseDTO;
+import br.com.serratec.projeto.exceptions.ResourceNotFoundException;
 import br.com.serratec.projeto.model.Veiculo;
 import br.com.serratec.projeto.repository.VeiculoRepository;
 import jakarta.transaction.Transactional;
@@ -45,6 +46,14 @@ public class VeiculoService {
 
     public Page<Veiculo> listarPorPagina(Pageable pageable) {
         return repository.findAll(pageable);
+    }
+
+    public void apagar(Long id){
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+        }else{
+            throw new ResourceNotFoundException("Veículo não encontrado");
+        }
     }
 
 }
