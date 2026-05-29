@@ -37,9 +37,14 @@ public class ClienteService {
         if (clienteBanco != null) {
             throw new ClienteEmailException("Email já cadastrado");
         }
-        
+        Endereco enderecoBanco = enRepository.findByCep(cliente.getEndereco().getCep());
+        if (enderecoBanco != null) {
+            cliente.setEndereco(enderecoBanco);
+            clienteRepository.save(cliente);
+        }else{
         clienteRepository.save(cliente);
         buscarCep(cliente.getEndereco().getCep());
+        }
         mailConfig.sendMail(cliente.getEmail(), "Cadastro de cliente", cliente.toString());
         return new ClienteResponseDTO(cliente);
     }
@@ -47,10 +52,6 @@ public class ClienteService {
 
 
     private EnderecoResponseDTO buscarCep(String cep){
-        /*Endereco enderecoBanco = enRepository.findByCep(cep);
-        if (enderecoBanco != null) {
-            return new EnderecoResponseDTO(enderecoBanco);
-        }else{*/
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://viacep.com.br/ws/"+cep+"/json/";
         Endereco enderecoViaCep = restTemplate.getForObject(url, Endereco.class);
@@ -58,7 +59,6 @@ public class ClienteService {
             enderecoViaCep.setCep(enderecoViaCep.getCep().replaceAll("-", ""));
             return inserir(enderecoViaCep);
         }
-        //}
         throw new EnderecoException("Cep não encontrado!");
     }
 

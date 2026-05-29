@@ -199,3 +199,93 @@ create global temporary table HTE_ordem_de_servico(rn_ integer not null, valorTo
 2026-05-29 02:10:02.100661-03:00 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_USUARIOS" already exists; SQL statement:
 create global temporary table HTE_usuarios(ativo boolean, rn_ integer not null, tentativasLogin integer, bloqueadoAte timestamp(6), dataCriacao timestamp(6), id bigint, email varchar(255), nome varchar(255), senha varchar(255), perfil enum ('ROLE_ADMIN'), primary key (rn_)) transactional [42101-240]
+2026-05-29 12:18:45.673794-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_servico(rn_ integer not null, valor numeric(38,2), id bigint, tempoEstimado timestamp(6), descricao varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 12:18:45.678992-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VEICULO" already exists; SQL statement:
+create global temporary table HTE_veiculo(ano integer, rn_ integer not null, cliente_id bigint, id bigint, placa varchar(8), cor varchar(255), marca varchar(255), modelo varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 12:18:45.681368-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ITEM_OS" already exists; SQL statement:
+create global temporary table HTE_item_os(desconto numeric(38,2), quantidade numeric(38,2), rn_ integer not null, subtotal numeric(38,2), id bigint, ordemDeServico_id bigint, servico_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-29 12:18:45.681368-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CLIENTE" already exists; SQL statement:
+create global temporary table HTE_cliente(rn_ integer not null, id bigint, cpf varchar(11), email varchar(255), endereco_cep varchar(255), nome varchar(255), telefone varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 12:18:45.683733-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ORDEM_DE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_ordem_de_servico(rn_ integer not null, valorTotal numeric(38,2), cliente_id bigint, id bigint, veiculo_id bigint, status enum ('ABERTA','ANDAMENTO','CANCELADA','FINALIZADA'), primary key (rn_)) transactional [42101-240]
+2026-05-29 12:18:45.684830-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_USUARIOS" already exists; SQL statement:
+create global temporary table HTE_usuarios(ativo boolean, rn_ integer not null, tentativasLogin integer, bloqueadoAte timestamp(6), dataCriacao timestamp(6), id bigint, email varchar(255), nome varchar(255), senha varchar(255), perfil enum ('ROLE_ADMIN'), primary key (rn_)) transactional [42101-240]
+2026-05-29 13:31:48.885105-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_servico(rn_ integer not null, valor numeric(38,2), id bigint, tempoEstimado timestamp(6), descricao varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 13:31:48.891378-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VEICULO" already exists; SQL statement:
+create global temporary table HTE_veiculo(ano integer, rn_ integer not null, cliente_id bigint, id bigint, placa varchar(8), cor varchar(255), marca varchar(255), modelo varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 13:31:48.892426-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ITEM_OS" already exists; SQL statement:
+create global temporary table HTE_item_os(desconto numeric(38,2), quantidade numeric(38,2), rn_ integer not null, subtotal numeric(38,2), id bigint, ordemDeServico_id bigint, servico_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-29 13:31:48.893931-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CLIENTE" already exists; SQL statement:
+create global temporary table HTE_cliente(rn_ integer not null, id bigint, cpf varchar(11), email varchar(255), endereco_cep varchar(255), nome varchar(255), telefone varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 13:31:48.895835-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ORDEM_DE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_ordem_de_servico(rn_ integer not null, valorTotal numeric(38,2), cliente_id bigint, id bigint, veiculo_id bigint, status enum ('ABERTA','ANDAMENTO','CANCELADA','FINALIZADA'), primary key (rn_)) transactional [42101-240]
+2026-05-29 13:31:48.896845-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_USUARIOS" already exists; SQL statement:
+create global temporary table HTE_usuarios(ativo boolean, rn_ integer not null, tentativasLogin integer, bloqueadoAte timestamp(6), dataCriacao timestamp(6), id bigint, email varchar(255), nome varchar(255), senha varchar(255), perfil enum ('ROLE_ADMIN'), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:14.426969-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_servico(rn_ integer not null, valor numeric(38,2), id bigint, tempoEstimado timestamp(6), descricao varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:14.434023-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VEICULO" already exists; SQL statement:
+create global temporary table HTE_veiculo(ano integer, rn_ integer not null, cliente_id bigint, id bigint, placa varchar(8), cor varchar(255), marca varchar(255), modelo varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:14.436093-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ITEM_OS" already exists; SQL statement:
+create global temporary table HTE_item_os(desconto numeric(38,2), quantidade numeric(38,2), rn_ integer not null, subtotal numeric(38,2), id bigint, ordemDeServico_id bigint, servico_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:14.437395-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CLIENTE" already exists; SQL statement:
+create global temporary table HTE_cliente(rn_ integer not null, id bigint, cpf varchar(11), email varchar(255), endereco_cep varchar(255), nome varchar(255), telefone varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:14.438578-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ORDEM_DE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_ordem_de_servico(rn_ integer not null, valorTotal numeric(38,2), cliente_id bigint, id bigint, veiculo_id bigint, status enum ('ABERTA','ANDAMENTO','CANCELADA','FINALIZADA'), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:14.440359-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_USUARIOS" already exists; SQL statement:
+create global temporary table HTE_usuarios(ativo boolean, rn_ integer not null, tentativasLogin integer, bloqueadoAte timestamp(6), dataCriacao timestamp(6), id bigint, email varchar(255), nome varchar(255), senha varchar(255), perfil enum ('ROLE_ADMIN'), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:22.087036-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_servico(rn_ integer not null, valor numeric(38,2), id bigint, tempoEstimado timestamp(6), descricao varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:22.088092-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VEICULO" already exists; SQL statement:
+create global temporary table HTE_veiculo(ano integer, rn_ integer not null, cliente_id bigint, id bigint, placa varchar(8), cor varchar(255), marca varchar(255), modelo varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:22.088092-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ITEM_OS" already exists; SQL statement:
+create global temporary table HTE_item_os(desconto numeric(38,2), quantidade numeric(38,2), rn_ integer not null, subtotal numeric(38,2), id bigint, ordemDeServico_id bigint, servico_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:22.089095-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CLIENTE" already exists; SQL statement:
+create global temporary table HTE_cliente(rn_ integer not null, id bigint, cpf varchar(11), email varchar(255), endereco_cep varchar(255), nome varchar(255), telefone varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:22.090095-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ORDEM_DE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_ordem_de_servico(rn_ integer not null, valorTotal numeric(38,2), cliente_id bigint, id bigint, veiculo_id bigint, status enum ('ABERTA','ANDAMENTO','CANCELADA','FINALIZADA'), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:04:22.091266-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_USUARIOS" already exists; SQL statement:
+create global temporary table HTE_usuarios(ativo boolean, rn_ integer not null, tentativasLogin integer, bloqueadoAte timestamp(6), dataCriacao timestamp(6), id bigint, email varchar(255), nome varchar(255), senha varchar(255), perfil enum ('ROLE_ADMIN'), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:39:23.067622-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_servico(rn_ integer not null, valor numeric(38,2), id bigint, tempoEstimado timestamp(6), descricao varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:39:23.073208-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VEICULO" already exists; SQL statement:
+create global temporary table HTE_veiculo(ano integer, rn_ integer not null, cliente_id bigint, id bigint, placa varchar(8), cor varchar(255), marca varchar(255), modelo varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:39:23.073710-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ITEM_OS" already exists; SQL statement:
+create global temporary table HTE_item_os(desconto numeric(38,2), quantidade numeric(38,2), rn_ integer not null, subtotal numeric(38,2), id bigint, ordemDeServico_id bigint, servico_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-29 14:39:23.074727-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CLIENTE" already exists; SQL statement:
+create global temporary table HTE_cliente(rn_ integer not null, id bigint, cpf varchar(11), email varchar(255), endereco_cep varchar(255), nome varchar(255), telefone varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:39:23.077076-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ORDEM_DE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_ordem_de_servico(rn_ integer not null, valorTotal numeric(38,2), cliente_id bigint, id bigint, veiculo_id bigint, status enum ('ABERTA','ANDAMENTO','CANCELADA','FINALIZADA'), primary key (rn_)) transactional [42101-240]
+2026-05-29 14:39:23.078109-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_USUARIOS" already exists; SQL statement:
+create global temporary table HTE_usuarios(ativo boolean, rn_ integer not null, tentativasLogin integer, bloqueadoAte timestamp(6), dataCriacao timestamp(6), id bigint, email varchar(255), nome varchar(255), senha varchar(255), perfil enum ('ROLE_ADMIN'), primary key (rn_)) transactional [42101-240]
