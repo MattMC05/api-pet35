@@ -4,9 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.Id;/* 
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToOne;*/
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -38,11 +38,11 @@ public class Cliente {
     @CPF
     @Column(unique = true, length = 11)
     private String cpf;
-
+    /* 
     @ManyToOne
     @JoinColumn(name = "cep")
     private Endereco endereco;
-
+    */
     @Override
     public String toString() {
         return "Nome:" + nome + ", Telefone:" + telefone + ", Email:" + email + ", CPF:" + cpf;
@@ -87,7 +87,7 @@ public class Cliente {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
+    /* 
     public Endereco getEndereco() {
         return endereco;
     }
@@ -95,5 +95,5 @@ public class Cliente {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
+    */
 }
