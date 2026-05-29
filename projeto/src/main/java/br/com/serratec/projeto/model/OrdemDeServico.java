@@ -36,7 +36,7 @@ public class OrdemDeServico {
     @OneToMany(mappedBy = "ordemDeServico", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<ItemOs> itemsOs = new ArrayList<>();
 
-    private BigDecimal valorTotal;
+    private BigDecimal valorTotal = BigDecimal.ZERO;
 
     public Long getId() {
         return id;

@@ -37,9 +37,9 @@ public class ClienteService {
         if (clienteBanco != null) {
             throw new ClienteEmailException("Email já cadastrado");
         }
-        buscarCep(cliente.getEndereco().getCep());
+        //buscarCep(cliente.getEndereco().getCep());
 
-        mailConfig.sendMail(cliente.getEmail(), "Cadastro de cliente", cliente.toString());
+        //mailConfig.sendMail(cliente.getEmail(), "Cadastro de cliente", cliente.toString());
         clienteRepository.save(cliente);
         return new ClienteResponseDTO(cliente);
     }
@@ -75,7 +75,7 @@ public class ClienteService {
     public ClienteResponseDTO alterar(Long id, Cliente cliente){
         if (clienteRepository.existsById(id)) {
             cliente.setId(id);
-            mailConfig.sendMail(cliente.getEmail(), "Atualização de dados do cliente", cliente.toString());
+            //mailConfig.sendMail(cliente.getEmail(), "Atualização de dados do cliente", cliente.toString());
             clienteRepository.save(cliente);
             return new ClienteResponseDTO(cliente);
         }

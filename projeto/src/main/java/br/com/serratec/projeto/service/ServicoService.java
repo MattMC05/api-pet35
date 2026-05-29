@@ -1,6 +1,7 @@
 package br.com.serratec.projeto.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,10 @@ public class ServicoService {
         return repository.findAll().stream()
         .map(servico -> new ServicoResponseDTO(servico))
         .collect(Collectors.toList());
+    }
+
+    public Optional<Servico> buscar(Long id){
+        return repository.findById(id);
     }
 
     public ServicoResponseDTO alterar( Long id, Servico ordemServico){
