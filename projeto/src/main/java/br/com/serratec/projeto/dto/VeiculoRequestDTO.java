@@ -1,5 +1,6 @@
 package br.com.serratec.projeto.dto;
 
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,6 +20,7 @@ public record VeiculoRequestDTO(
 
     @NotNull(message = "Ano é obrigatório")
     @Min(value = 1970, message = "Ano deve ser maior que 1970")
+    @Max(value = 2026, message = "Ano deve ser menor que 2026")
     Integer ano,
 
     @NotBlank(message = "Cor é obrigatória")

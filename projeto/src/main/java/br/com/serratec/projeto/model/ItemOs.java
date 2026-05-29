@@ -60,7 +60,7 @@ public class ItemOs { //tabela intermediária
     }
 
     public BigDecimal getSubtotal() {
-        subtotal = servico.getValor().multiply(quantidade).subtract(servico.getValor().multiply(desconto));
+        subtotal = servico.getValor().multiply(quantidade).subtract((servico.getValor().multiply(quantidade)).multiply(desconto));
         return subtotal;
     }
 
