@@ -72,14 +72,29 @@ public class ClienteService {
         .collect(Collectors.toList());
     }
 
-    public ClienteResponseDTO alterar(Long id, Cliente cliente){
+    public Cliente alterar(Long id, Cliente cliente){
         if (clienteRepository.existsById(id)) {
+            Cliente clienteExistente = clienteRepository.findById(id).get();
             cliente.setId(id);
-            clienteRepository.save(cliente);
+            if (cliente.getNome() == null) {
+                cliente.setNome(clienteExistente.getNome());
+            }
+            if (cliente.getTelefone() == null) {
+                cliente.setTelefone(clienteExistente.getTelefone());
+            }
+            if (cliente.getEmail() == null) {
+                cliente.setEmail(clienteExistente.getEmail());
+            }
+            if (cliente.getCpf() == null) {
+                cliente.setCpf(clienteExistente.getCpf());
+            }
+            if (cliente.getEndereco() == null) {
+                cliente.setEndereco(clienteExistente.getEndereco());
+            }
             mailConfig.sendMail(cliente.getEmail(), "Atualização de dados do cliente", cliente.toString());
-            return new ClienteResponseDTO(cliente);
+            return clienteRepository.save(cliente);
         }
-        return null;
+        throw new ResourceNotFoundException("Cliente não encontrado");
     }
 
     public void apagar(Long id){

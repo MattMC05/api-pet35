@@ -40,12 +40,9 @@ public class VeiculoController {
 
     @PutMapping("{id}")
     public ResponseEntity<VeiculoResponseDTO> alterar(@PathVariable Long id, @Valid @RequestBody Veiculo veiculo) {
-        if (alterar(id, veiculo) != null) {
-            service.alterar(id, veiculo);
-            var veiculoAtualizado = new VeiculoResponseDTO(veiculo);
-            return ResponseEntity.ok().body(veiculoAtualizado);    
-        }
-        return ResponseEntity.notFound().build();
+        service.alterar(id, veiculo);
+        var veiculoAtualizado = new VeiculoResponseDTO(veiculo);
+        return ResponseEntity.ok().body(veiculoAtualizado);
     }
 
     @DeleteMapping("{id}")

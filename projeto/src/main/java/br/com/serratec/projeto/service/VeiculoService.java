@@ -36,12 +36,38 @@ public class VeiculoService {
         .collect(Collectors.toList());
     }
     
-    public Veiculo alterar(Long id, Veiculo veiculo){
+    /*public Veiculo alterar(Long id, Veiculo veiculo){
         if (repository.existsById(id)) {
             veiculo.setId(id);
             return repository.save(veiculo);
         }
         return null;
+    }*/
+    public Veiculo alterar(Long id, Veiculo veiculo){
+        if (repository.existsById(id)) {
+            Veiculo veiculoExistente = repository.findById(id).get();
+            veiculo.setId(id);
+            if (veiculo.getPlaca() == null) {
+                veiculo.setPlaca(veiculoExistente.getPlaca());
+            }
+            if (veiculo.getMarca() == null) {
+                veiculo.setMarca(veiculoExistente.getMarca());
+            }
+            if (veiculo.getModelo() == null) {
+                veiculo.setModelo(veiculoExistente.getModelo());
+            }
+            if (veiculo.getAno() == null) {
+                veiculo.setAno(veiculoExistente.getAno());
+            }
+            if (veiculo.getCor() == null) {
+                veiculo.setCor(veiculoExistente.getCor());
+            }
+            if (veiculo.getCliente() == null) {
+                veiculo.setCliente(veiculoExistente.getCliente());
+            }
+            return repository.save(veiculo);
+        }
+        throw new ResourceNotFoundException("Veiculo não encontrado");
     }
 
     public Page<Veiculo> listarPorPagina(Pageable pageable) {
