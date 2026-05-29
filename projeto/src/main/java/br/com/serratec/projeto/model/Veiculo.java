@@ -1,6 +1,5 @@
 package br.com.serratec.projeto.model;
 
-import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,8 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -30,9 +31,10 @@ public class Veiculo {
     @NotBlank(message = "O modelo é obrigatório.")
     private String modelo;
 
-    @NotBlank(message = "A data/ano é obrigatória.")
-    @PastOrPresent(message = "A data do veículo não pode ser futura.")
-    private LocalDate ano;
+    @NotNull(message = "O ano é obrigatório")
+    @Min(value = 1970, message = "Ano deve ser maior que 1970")
+    @Max(value = 2026, message = "Ano deve ser menor que 2026")
+    private Integer ano;
 
     private String cor;
 
@@ -73,11 +75,11 @@ public class Veiculo {
         this.modelo = modelo;
     }
 
-    public LocalDate getAno() {
+    public Integer getAno() {
         return ano;
     }
 
-    public void setAno(LocalDate ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 

@@ -1,7 +1,5 @@
 package br.com.serratec.projeto.dto;
 
-import java.time.LocalDate;
-
 import br.com.serratec.projeto.model.Veiculo;
 
 public record VeiculoResponseDTO(
@@ -10,7 +8,7 @@ public record VeiculoResponseDTO(
     String placa,
     String marca,
     String modelo,
-    LocalDate ano,
+    Integer ano,
     String cor,
     ClienteResponseDTO cliente
 ) 
