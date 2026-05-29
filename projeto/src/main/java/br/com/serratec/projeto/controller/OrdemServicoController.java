@@ -32,12 +32,9 @@ public class OrdemServicoController {
 
     @PutMapping("{id}")
     public ResponseEntity<OrdemServicoResponseDTO> alterar(@PathVariable Long id, @Valid @RequestBody OrdemDeServico ordemServico) {
-        if (alterar(id, ordemServico) != null) {
-            osService.alterar(id, ordemServico);
-            var ordemServicoAtualizado = new OrdemServicoResponseDTO(ordemServico);
-            return ResponseEntity.ok().body(ordemServicoAtualizado);    
-        }
-        return ResponseEntity.notFound().build();
+        osService.alterar(id, ordemServico);
+        var ordemServicoAtualizado = new OrdemServicoResponseDTO(ordemServico);
+        return ResponseEntity.ok().body(ordemServicoAtualizado);    
     }
 
     @DeleteMapping("{id}")

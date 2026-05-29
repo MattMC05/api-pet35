@@ -81,4 +81,13 @@ public class OrdemDeServico {
         return valorTotal;
     }
 
+    
+    public void setItemsOs(List<ItemOs> itemsOs) {
+        this.itemsOs = itemsOs;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
 }

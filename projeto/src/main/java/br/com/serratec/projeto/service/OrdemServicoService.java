@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.serratec.projeto.dto.OrdemServicoRequestDTO;
 import br.com.serratec.projeto.dto.OrdemServicoResponseDTO;
 import br.com.serratec.projeto.exceptions.ResourceNotFoundException;
 import br.com.serratec.projeto.model.ItemOs;
@@ -45,13 +46,28 @@ public class OrdemServicoService {
         .collect(Collectors.toList());
     }
 
-    public OrdemServicoResponseDTO alterar( Long id, OrdemDeServico ordemServico){
+    public OrdemServicoRequestDTO alterar(Long id, OrdemDeServico ordemServico){
         if (repository.existsById(id)) {
+            OrdemDeServico ordemServicoExistente = repository.findById(id).get();
             ordemServico.setId(id);
-            repository.save(ordemServico);
-            return new OrdemServicoResponseDTO(ordemServico);
+            if (ordemServico.getStatus() == null) {
+                ordemServico.setStatus(ordemServicoExistente.getStatus());
+            }
+            if (ordemServico.getCliente() == null) {
+                ordemServico.setCliente(ordemServicoExistente.getCliente());
+            }
+            if (ordemServico.getVeiculo() == null) {
+                ordemServico.setVeiculo(ordemServicoExistente.getVeiculo());
+            }
+            if (ordemServico.getItemsOs() == null) {
+                ordemServico.setItemsOs(ordemServicoExistente.getItemsOs());
+            }
+            if (ordemServico.getValorTotal() == null) {
+                ordemServico.setValorTotal(ordemServicoExistente.getValorTotal());
+            }
+            return new OrdemServicoRequestDTO(repository.save(ordemServico));
         }
-        return null;
+        throw new ResourceNotFoundException("OrdemServico não encontrado");
     }
 
     public void apagar(Long id){

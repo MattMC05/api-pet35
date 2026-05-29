@@ -32,12 +32,9 @@ public class ClienteController {
 
     @PutMapping("{id}")
     public ResponseEntity<ClienteResponseDTO> alterar(@PathVariable Long id, @Valid @RequestBody Cliente cliente) {
-        if (alterar(id, cliente) != null) {
-            service.alterar(id, cliente);
-            var clienteAtualizado = new ClienteResponseDTO(cliente);
-            return ResponseEntity.ok().body(clienteAtualizado);    
-        }
-        return ResponseEntity.notFound().build();
+        service.alterar(id, cliente);
+        var clienteAtualizado = new ClienteResponseDTO(cliente);
+        return ResponseEntity.ok().body(clienteAtualizado);    
     }
 
     @DeleteMapping("{id}")

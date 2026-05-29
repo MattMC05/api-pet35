@@ -34,13 +34,22 @@ public class ServicoService {
         return repository.findById(id);
     }
 
-    public ServicoResponseDTO alterar( Long id, Servico ordemServico){
+    public Servico alterar(Long id, Servico servico){
         if (repository.existsById(id)) {
-            ordemServico.setId(id);
-            repository.save(ordemServico);
-            return new ServicoResponseDTO(ordemServico);
+            Servico servicoExistente = repository.findById(id).get();
+            servico.setId(id);
+            if (servico.getDescricao() == null) {
+                servico.setDescricao(servicoExistente.getDescricao());
+            }
+            if (servico.getValor() == null) {
+                servico.setValor(servicoExistente.getValor());
+            }
+            if (servico.getTempoEstimado() == null) {
+                servico.setTempoEstimado(servicoExistente.getTempoEstimado());
+            }
+            return repository.save(servico);
         }
-        return null;
+        throw new ResourceNotFoundException("Servico não encontrado");
     }
 
     public void apagar(Long id){
