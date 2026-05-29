@@ -10,12 +10,15 @@ public record VeiculoResponseDTO(
     String modelo,
     Integer ano,
     String cor,
-    ClienteResponseDTO cliente
+    String nomeProprietario,
+    String telefone,
+    String email,
+    String cpf
 ) 
 
 {
     public VeiculoResponseDTO(Veiculo v) {
-        this(v.getId(), v.getPlaca(), v.getMarca(), v.getModelo(), v.getAno(), v.getCor(), new ClienteResponseDTO(v.getCliente()));
+        this(v.getId(), v.getPlaca(), v.getMarca(), v.getModelo(), v.getAno(), v.getCor(), v.getCliente().getNome(),v.getCliente().getTelefone(),v.getCliente().getEmail(),v.getCliente().getCpf());
     }
 
 }

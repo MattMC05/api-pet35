@@ -8,16 +8,16 @@ public record ClienteResponseDTO(
     String nome,
     String telefone,
     String email,
-    String cpf/*, 
+    String cpf, 
     String logradouro, 
     String bairro, 
     String localidade, 
-    String uf*/
+    String uf
 )
 
 {
     public ClienteResponseDTO(Cliente c) {
-        this(c.getId(), c.getNome(), c.getTelefone(), c.getEmail(), c.getCpf()/*, c.getEndereco().getLogradouro(), c.getEndereco().getBairro(), c.getEndereco().getLocalidade(), c.getEndereco().getUf()*/);
+        this(c.getId(), c.getNome(), c.getTelefone(), c.getEmail(), c.getCpf(), c.getEndereco().getLogradouro(), c.getEndereco().getBairro(), c.getEndereco().getLocalidade(), c.getEndereco().getUf());
     }
 
 }

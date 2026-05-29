@@ -2,9 +2,11 @@ package br.com.serratec.projeto.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
 import br.com.serratec.projeto.configuration.MailConfig;
 import br.com.serratec.projeto.dto.ClienteResponseDTO;
 import br.com.serratec.projeto.dto.EnderecoResponseDTO;
@@ -27,7 +29,7 @@ public class ClienteService {
     private EnderecoRepository enRepository;
 
     @Autowired
-    MailConfig mailConfig;
+    private MailConfig mailConfig;
 
     @Transactional
     public ClienteResponseDTO inserir(Cliente cliente){
@@ -35,26 +37,28 @@ public class ClienteService {
         if (clienteBanco != null) {
             throw new ClienteEmailException("Email já cadastrado");
         }
-        //buscarCep(cliente.getEndereco().getCep());
-
-        //mailConfig.sendMail(cliente.getEmail(), "Cadastro de cliente", cliente.toString());
+        
         clienteRepository.save(cliente);
+        buscarCep(cliente.getEndereco().getCep());
+        mailConfig.sendMail(cliente.getEmail(), "Cadastro de cliente", cliente.toString());
         return new ClienteResponseDTO(cliente);
     }
 
+
+
     private EnderecoResponseDTO buscarCep(String cep){
-        Endereco enderecoBanco = enRepository.findByCep(cep);
+        /*Endereco enderecoBanco = enRepository.findByCep(cep);
         if (enderecoBanco != null) {
             return new EnderecoResponseDTO(enderecoBanco);
-        }else{
-            RestTemplate restTemplate = new RestTemplate();
-            String url = "https://viacep.com.br/ws/"+cep+"/json/";
-            Endereco enderecoViaCep = restTemplate.getForObject(url, Endereco.class);
-            if (enderecoViaCep != null) {
-                enderecoViaCep.setCep(enderecoViaCep.getCep().replaceAll("-", ""));
-                return inserir(enderecoViaCep);
-            }
+        }else{*/
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "https://viacep.com.br/ws/"+cep+"/json/";
+        Endereco enderecoViaCep = restTemplate.getForObject(url, Endereco.class);
+        if (enderecoViaCep != null) {
+            enderecoViaCep.setCep(enderecoViaCep.getCep().replaceAll("-", ""));
+            return inserir(enderecoViaCep);
         }
+        //}
         throw new EnderecoException("Cep não encontrado!");
     }
 
@@ -71,8 +75,8 @@ public class ClienteService {
     public ClienteResponseDTO alterar(Long id, Cliente cliente){
         if (clienteRepository.existsById(id)) {
             cliente.setId(id);
-            //mailConfig.sendMail(cliente.getEmail(), "Atualização de dados do cliente", cliente.toString());
             clienteRepository.save(cliente);
+            mailConfig.sendMail(cliente.getEmail(), "Atualização de dados do cliente", cliente.toString());
             return new ClienteResponseDTO(cliente);
         }
         return null;

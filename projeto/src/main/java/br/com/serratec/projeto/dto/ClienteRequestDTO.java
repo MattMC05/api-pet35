@@ -1,5 +1,6 @@
 package br.com.serratec.projeto.dto;
 
+import br.com.serratec.projeto.model.Endereco;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -19,17 +20,12 @@ public record ClienteRequestDTO(
     @NotBlank(message = "CPF é obrigatório")
     @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos")
     String cpf,
-
+    
     @NotBlank(message = "CEP é obrigatório")
-    @Pattern(regexp = "\\d{8}", message = "CEP deve conter 8 dígitos")
-    String cep
+    Endereco endereco
 ) 
 
 {
-    // Criamos este construtor compacto para remover qualquer caractere que não seja número e garantir que o código não quebre se o CPF e o CEP for nulo.
-    public ClienteRequestDTO {
-        cpf = (cpf != null) ? cpf.replaceAll("\\D", "") : null;
-        cep = (cep != null) ? cep.replaceAll("\\D", "") : null;
-    }
+
 
 }
