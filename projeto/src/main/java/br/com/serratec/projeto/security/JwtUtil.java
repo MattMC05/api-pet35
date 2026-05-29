@@ -14,10 +14,10 @@ import io.jsonwebtoken.security.Keys;
 public class JwtUtil {
 
     // Injeção limpa via application.properties com fallback seguro
-    @Value("${jwt.secret:minha_chave_super_secreta_padrao_para_oficina_2026_xpto_com_mais_de_32_bytes}")
+    @Value("${auth.jwt-secret:minha_chave_super_secreta_padrao_para_oficina_2026_xpto_com_mais_de_32_bytes}")
     private String secret;
 
-    @Value("${jwt.expiration:86400000}") // 24 horas de validade do token
+    @Value("${auth.jwt-expiration-miliseg:86400000}") // 24 horas de validade do token
     private long expiration;
 
     // Monta a chave criptográfica segura exigida pelo JJWT moderno.
