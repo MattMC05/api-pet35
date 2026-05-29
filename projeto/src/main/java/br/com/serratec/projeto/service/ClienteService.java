@@ -2,11 +2,9 @@ package br.com.serratec.projeto.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import br.com.serratec.projeto.configuration.MailConfig;
 import br.com.serratec.projeto.dto.ClienteResponseDTO;
 import br.com.serratec.projeto.dto.EnderecoResponseDTO;
@@ -43,8 +41,6 @@ public class ClienteService {
         clienteRepository.save(cliente);
         return new ClienteResponseDTO(cliente);
     }
-
-
 
     private EnderecoResponseDTO buscarCep(String cep){
         Endereco enderecoBanco = enRepository.findByCep(cep);
