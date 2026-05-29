@@ -51,6 +51,14 @@ public class ItemOs { //tabela intermediária
         this.quantidade = quantidade;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public BigDecimal getSubtotal() {
         subtotal = servico.getValor().multiply(quantidade).subtract(servico.getValor().multiply(desconto));
         return subtotal;
@@ -70,6 +78,10 @@ public class ItemOs { //tabela intermediária
 
     public void setServico(Servico servico) {
         this.servico = servico;
+    }
+
+    public void setSubtotal(BigDecimal subtotal) {
+        this.subtotal = subtotal;
     }
 
 }

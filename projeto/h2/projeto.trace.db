@@ -1,0 +1,18 @@
+2026-05-28 23:24:41.553366-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_servico(rn_ integer not null, tempoEstimado date, valor numeric(38,2), id bigint, descricao varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-28 23:24:41.555872-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VEICULO" already exists; SQL statement:
+create global temporary table HTE_veiculo(ano date, rn_ integer not null, cliente_id bigint, id bigint, placa varchar(8), cor varchar(255), marca varchar(255), modelo varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-28 23:24:41.559408-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ITEM_OS" already exists; SQL statement:
+create global temporary table HTE_item_os(desconto numeric(38,2), quantidade numeric(38,2), rn_ integer not null, subtotal numeric(38,2), id bigint, ordemDeServico_id bigint, servico_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-28 23:24:41.560410-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CLIENTE" already exists; SQL statement:
+create global temporary table HTE_cliente(rn_ integer not null, id bigint, cpf varchar(11), email varchar(255), endereco_cep varchar(255), nome varchar(255), telefone varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-28 23:24:41.561408-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_ORDEM_DE_SERVICO" already exists; SQL statement:
+create global temporary table HTE_ordem_de_servico(rn_ integer not null, valorTotal numeric(38,2), cliente_id bigint, id bigint, veiculo_id bigint, status enum ('ABERTA','ANDAMENTO','CANCELADA','FINALIZADA'), primary key (rn_)) transactional [42101-240]
+2026-05-28 23:24:41.562851-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_USUARIOS" already exists; SQL statement:
+create global temporary table HTE_usuarios(ativo boolean, rn_ integer not null, tentativasLogin integer, bloqueadoAte timestamp(6), dataCriacao timestamp(6), id bigint, email varchar(255), nome varchar(255), senha varchar(255), perfil enum ('ROLE_ADMIN'), primary key (rn_)) transactional [42101-240]

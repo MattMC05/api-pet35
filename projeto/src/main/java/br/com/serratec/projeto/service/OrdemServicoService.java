@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.serratec.projeto.dto.OrdemServicoResponseDTO;
 import br.com.serratec.projeto.exceptions.ResourceNotFoundException;
+import br.com.serratec.projeto.model.ItemOs;
 import br.com.serratec.projeto.model.OrdemDeServico;
+import br.com.serratec.projeto.repository.ItemOsRepository;
 import br.com.serratec.projeto.repository.OrdemServicoRepository;
 import jakarta.transaction.Transactional;
 
@@ -16,10 +18,24 @@ import jakarta.transaction.Transactional;
 public class OrdemServicoService {
     @Autowired
     private OrdemServicoRepository repository;
+
+    @Autowired
+    private ItemOsRepository itemRepository;
+
+    @Autowired
+    private ServicoService sService;
     
     @Transactional
     public OrdemServicoResponseDTO inserir(OrdemDeServico ordemServico){
+        for (ItemOs ios : ordemServico.getItemsOs()) {
+            ios.setOrdemDeServico(ordemServico);
+            ios.setServico(sService.buscar(ios.getServico().getId()).get());
+            ios.setDesconto(ios.getDesconto());
+            ios.setQuantidade(ios.getQuantidade());
+            ios.setSubtotal(ios.getSubtotal());
+        }
         repository.save(ordemServico);
+        itemRepository.saveAll(ordemServico.getItemsOs());
         return new OrdemServicoResponseDTO(ordemServico);
     }
 
