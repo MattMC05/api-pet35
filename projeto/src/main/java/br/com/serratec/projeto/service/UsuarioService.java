@@ -9,8 +9,15 @@ import br.com.serratec.projeto.model.Usuario;
 import br.com.serratec.projeto.repository.UsuarioRepository;
 
 @Service
-// O uso do 'record' faz com que o Spring injete o Repository e o Encoder automaticamente
-public record UsuarioService(UsuarioRepository repository, PasswordEncoder encoder) {
+public class UsuarioService {
+
+    private final UsuarioRepository repository;
+    private final PasswordEncoder encoder;
+
+    public UsuarioService(UsuarioRepository repository, PasswordEncoder encoder) {
+        this.repository = repository;
+        this.encoder = encoder;
+    }
 
     @Transactional
     public UsuarioResponseDTO registrar(UsuarioRequestDTO dto) {
@@ -18,18 +25,15 @@ public record UsuarioService(UsuarioRepository repository, PasswordEncoder encod
             throw new IllegalArgumentException("Este e-mail já está em uso.");
         }
 
-        // Criptografa a senha ANTES de construir a entidade.
-        // O perfil padrão (ROLE_MECANICO) foi definido no construtor.
         Usuario novoUsuario = new Usuario(
             dto.nome(), 
             dto.email(), 
             encoder.encode(dto.senha()), 
-            null);
+            null
+        );
         
         return new UsuarioResponseDTO(repository.save(novoUsuario));
     }
-
-    // MÉTODOS DE PROTEÇÃO (FORÇA BRUTA E STATUS)
 
     @Transactional
     public void processarFalhaLogin(String email) {
@@ -50,7 +54,7 @@ public record UsuarioService(UsuarioRepository repository, PasswordEncoder encod
     @Transactional
     public void inativarUsuario(Long id) {
         repository.findById(id).ifPresent(usuario -> {
-            usuario.desativar(); // Soft Delete (Nunca apagamos o registo do banco)
+            usuario.desativar();
             repository.save(usuario);
         });
     }

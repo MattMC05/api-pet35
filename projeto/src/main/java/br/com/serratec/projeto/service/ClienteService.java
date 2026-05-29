@@ -29,7 +29,7 @@ public class ClienteService {
     private EnderecoRepository enRepository;
 
     @Autowired
-    private MailConfig mailConfig;
+    MailConfig mailConfig;
 
     @Transactional
     public ClienteResponseDTO inserir(Cliente cliente){

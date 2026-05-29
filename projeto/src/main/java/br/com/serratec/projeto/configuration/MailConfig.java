@@ -1,4 +1,4 @@
-/*package br.com.serratec.projeto.configuration;
+package br.com.serratec.projeto.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,4 +23,3 @@ public class MailConfig {
         javaMailSender.send(mensagem);
     }
 }
-*/
