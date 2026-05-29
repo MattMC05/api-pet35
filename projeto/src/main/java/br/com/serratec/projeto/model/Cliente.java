@@ -1,20 +1,24 @@
 package br.com.serratec.projeto.model;
 
+import java.util.Map;
+
+import org.hibernate.validator.constraints.br.CPF;
+
+import br.com.serratec.projeto.dto.ClienteRequestDTO;
+import br.com.serratec.projeto.dto.ViaCepDTO;
+import br.com.serratec.projeto.service.ViaCepService;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "clientes")
 public class Cliente {
 
     @Id
@@ -39,13 +43,11 @@ public class Cliente {
     @Column(unique = true, length = 11)
     private String cpf;
 
-    @ManyToOne
-    @JoinColumn(name = "cep")
-    private Endereco endereco;
+    public String getEndereco;
 
-    @Override
-    public String toString() {
-        return "Nome:" + nome + ", Telefone:" + telefone + ", Email:" + email + ", CPF:" + cpf;
+    public Endereco endereco;
+
+    public Cliente() {
     }
 
     public Long getId() {
@@ -64,20 +66,20 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getCpf() {
@@ -89,11 +91,67 @@ public class Cliente {
     }
 
     public Endereco getEndereco() {
-        return endereco;
+        return getEndereco();
     }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
+    private void preencherEndereco(Cliente cliente, String cep, ViaCepService viaCepService) {
+        ViaCepDTO enderecoViaCep = viaCepService.consultarCep(cep);
+        if (enderecoViaCep != null && enderecoViaCep.cep() != null) {
+            // 💡 Veja como fica agora:
+            cliente.getEndereco().setCep(cep);
+            cliente.getEndereco().setLogradouro(enderecoViaCep.logradouro());
+            cliente.getEndereco().setBairro(enderecoViaCep.bairro());
+            cliente.getEndereco().setCidade(enderecoViaCep.localidade());
+            cliente.getEndereco().setUf(enderecoViaCep.uf());
+        } else {
+            throw new IllegalArgumentException("CEP inválido ou não encontrado: " + cep);
+        }
+    }
+
+    private void copiarDadosBase(ClienteRequestDTO dto, Cliente cliente) {
+        cliente.setNome(dto.nome());
+        cliente.setEmail(dto.email());
+        cliente.setTelefone(dto.telefone());
+        cliente.setCpf(dto.cpf());
+    }
+
+    public Object getCep() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCep'");
+    }
+
+    public void setC(String cep) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setC'");
+    }
+
+    public Map<String, ?> id() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'id'");
+    }
+
+    public void setLogradouro(String logradouro) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setLogradouro'");
+    }
+
+    public void setBairro(String bairro) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setBairro'");
+    }
+
+    public void setCidade(String localidade) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCidade'");
+    }
+
+    public void setUf(String uf) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setUf'");
+    }
 }
+

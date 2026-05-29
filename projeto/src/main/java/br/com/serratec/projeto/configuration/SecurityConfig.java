@@ -95,7 +95,7 @@ public class SecurityConfig {
         // Métodos HTTP permitidos
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
         
-        // 💡 DICA SÊNIOR EXTRA: É fundamental permitir os cabeçalhos de Authorization para o JWT passar no CORS!
+        // É fundamental permitir os cabeçalhos de Authorization para o JWT passar no CORS!
         corsConfiguration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Cache-Control"));
         
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

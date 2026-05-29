@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.serratec.projeto.model.Endereco;
 
-public interface EnderecoRepository extends JpaRepository<Endereco,String>{
+public interface EnderecoRepository extends JpaRepository<Endereco, Long>{
     Endereco findByCep(String cep);
+
+    
 }

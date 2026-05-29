@@ -14,35 +14,49 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class OrdemServicoService {
+    private final ModeloNotificacaoService modeloNotificacaoService;
     @Autowired
     private OrdemServicoRepository repository;
-    
+
+    OrdemServicoService(ModeloNotificacaoService modeloNotificacaoService) {
+        this.modeloNotificacaoService = modeloNotificacaoService;
+    }
+
     @Transactional
-    public OrdemServicoResponseDTO inserir(OrdemDeServico ordemServico){
+    public OrdemServicoResponseDTO inserir(OrdemDeServico ordemServico) {
         repository.save(ordemServico);
         return new OrdemServicoResponseDTO(ordemServico);
     }
 
-    public List<OrdemServicoResponseDTO> listarTodos(){
+    public List<OrdemServicoResponseDTO> listarTodos() {
         return repository.findAll().stream()
-        .map(ordemServico -> new OrdemServicoResponseDTO(ordemServico))
-        .collect(Collectors.toList());
+                .map(ordemServico -> new OrdemServicoResponseDTO(ordemServico))
+                .collect(Collectors.toList());
     }
 
-    public OrdemServicoResponseDTO alterar( Long id, OrdemDeServico ordemServico){
-        if (repository.existsById(id)) {
-            ordemServico.setId(id);
-            repository.save(ordemServico);
-            return new OrdemServicoResponseDTO(ordemServico);
-        }
-        return null;
+    @Transactional
+    public OrdemServicoResponseDTO alterar(Long id, OrdemDeServico ordemServicoAlterada) {
+        return repository.findById(id).map(osExistente -> {
+            String statusAntigo = osExistente.getStatus() != null ? osExistente.getStatus().toString() : "";
+            String statusNovo = ordemServicoAlterada.getStatus() != null ? ordemServicoAlterada.getStatus().toString()
+                : "";
+            osExistente.setDescricao(ordemServicoAlterada.getDescricao());
+            osExistente.setValor(ordemServicoAlterada.getValorTotal());
+            osExistente.setStatus(ordemServicoAlterada.getStatus());
+            OrdemDeServico osSalva = repository.save(osExistente);
+            if (!statusAntigo.equals(statusNovo)) {
+                modeloNotificacaoService.notificarMudancaStatus(osSalva);
+            }
+            return new OrdemServicoResponseDTO(osSalva);
+
+        }).orElseThrow(() -> new IllegalArgumentException("Ordem de Serviço não encontrada com o ID: " + id));
     }
 
-    public void apagar(Long id){
+    public void apagar(Long id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);
-        }else{
-            throw new ResourceNotFoundException("Ordem de Serviço não encontrada");
+        } else {
+            throw new ResourceNotFoundException("\"Ordem de Serviço não encontrada com o ID: \" + id");
         }
     }
 }

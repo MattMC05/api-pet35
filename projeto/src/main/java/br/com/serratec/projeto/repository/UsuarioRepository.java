@@ -2,8 +2,10 @@ package br.com.serratec.projeto.repository;
 
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import br.com.serratec.projeto.model.Usuario;
 
+@Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     
     // Usado pelo Spring Security para carregar o usuário durante o login e a validação do Token

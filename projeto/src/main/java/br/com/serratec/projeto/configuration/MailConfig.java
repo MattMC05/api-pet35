@@ -16,7 +16,7 @@ public class MailConfig {
 
     public void sendMail(String para, String assunto, String texto){
         SimpleMailMessage mensagem = new SimpleMailMessage();
-        mensagem.setFrom(email);
+        mensagem.setFrom("gomonit659@marineso.com");
         mensagem.setTo(para);
         mensagem.setSubject(assunto);
         mensagem.setText("Dados do Cadastro!\n"+texto+"\n\n\n Residência 2026");

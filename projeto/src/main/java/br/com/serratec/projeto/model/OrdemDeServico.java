@@ -81,4 +81,19 @@ public class OrdemDeServico {
         return valorTotal;
     }
 
+    public Object getDescricao() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDescricao'");
+    }
+
+    public void setDescricao(Object descricao) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDescricao'");
+    }
+
+    public void setValor(BigDecimal valorTotal2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setValor'");
+    }
+
 }
