@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import br.com.serratec.projeto.enums.OsStatus;
+import br.com.serratec.projeto.repository.ItemOsRepository;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
