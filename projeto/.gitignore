@@ -41,7 +41,7 @@ build/
 application-secret.yml
 secrets.json
 db_credentials.xml
-.db
+db
 
 # ==========================================
 # 4. Logs e Arquivos do Sistema Operacional
